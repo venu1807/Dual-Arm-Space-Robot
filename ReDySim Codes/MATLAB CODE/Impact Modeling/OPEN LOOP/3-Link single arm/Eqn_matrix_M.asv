@@ -1,0 +1,53 @@
+%clc;
+%clear all;
+
+function [JT,I,F,c]= Eqn_matrix_M()
+
+syms x0 y0 m0 m1 m2 m3 m4 m5 m6 lc0 lc1 lc2 lc3 lc4 lc5 lc6 th0 th1 th2 th3 th4 th5 th6 l0 l1 l2 l3 l4 l5 l6 Izz0 Izz1 Izz2 Izz3 Izz4 Izz5 Izz6 t
+syms dx0 dy0 dth0 dth1 dth2 dth3
+syms fx0 fy0 tau0 tau1 tau2 tau3 
+
+%Ti=0; Tf=20;
+
+%%%%%%yy0=[0;0;0; 0.3803; -0.6198; 1.2867; pi-0.3803; 0.6198; -1.2867;0;0;0;0;0;0;0;0;0]; 
+
+%yy0=[0;0;0; 0.698;-1.571; 1.047; 2.444 ;1.571; -1.047;0;0;0;0;0;0;0;0;0];
+
+%[T,Y] = ode45(@rigid_1,[Ti Tf],yy0);
+
+%n=length(T)
+
+%x0=Y(n,1); y0=Y(n,2); th0=Y(n,3); th1=Y(n,4); th2=Y(n,5); th3=Y(n,6); th4=Y(n,7); th5=Y(n,8); th6=Y(n,9);
+%dx0=Y(n,10); dy0=Y(n,11); dth0=Y(n,12); dth1=Y(n,13); dth2=Y(n,14); dth3=Y(n,15);dth4=Y(n,16); dth5=Y(n,17); dth6=Y(n,18);
+
+
+[M,C,F] = accln()
+
+Ib=M(1:3,1:3);
+Ibm=M(1:3,4:6);
+Im=M(4:6,4:6);
+
+%C=simplify(C);
+Cb=C(1:3,1);
+Cm=C(4:6,1);
+
+[J]=jacob()
+
+Jbe=J(:,1:3);
+Jme=J(:,4:6);
+
+F=[fx0; fy0; tau0; tau1; tau2; tau3];
+
+Fb=F(1:3);
+Fm=F(4:6);
+%
+Ibinv=inv(Ib);
+%Ibinv=simplify(Ibinv);
+I=Im-(Ibm.'*Ibinv*Ibm);
+%I=simplify(I);                        %GIM
+c=Cm-(Ibm.'*Ibinv*Cb);               %GCFM
+%c=simplify(c);
+F=Fm-(Ibm.'*Ibinv*Fb);
+%F=simplify(F);                     %GTM
+JT=Jme.'-(Ibm.'*Ibinv*(Jbe.'));
+%JT=simplify(JT);                  %GJM

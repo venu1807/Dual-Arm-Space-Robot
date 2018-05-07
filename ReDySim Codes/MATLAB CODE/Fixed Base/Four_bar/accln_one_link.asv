@@ -1,0 +1,67 @@
+clc;
+clear all;
+
+%function   [ddq] = accln()
+syms m1 lc1  th1 l1 Izz1
+syms dth1 
+syms tau1
+
+g=[0; -9.81; 0];
+
+th0=0;x0=0;y0=0;
+
+q=[th1]
+dq=[dth1]
+
+c1=cos(th1);
+s1=sin(th1);
+
+c10=[lc1*c1
+    lc1*s1
+    0];
+  
+
+w10=[0
+    0
+    dth1];
+
+
+v10=[diff(c10,th1)]*[dth1];
+
+K10=((m1*v10.'*v10)+(Izz1*w10.'*w10))/2;
+
+P10=-m1*(g'*c10);
+
+K=simplify(K10);
+
+P=simplify(P10)
+
+%Diff K with q_dot
+
+K1=[diff(K,dth1)];
+
+%Diff K1 with t
+
+K2=[diff(K1,dth1) ];
+
+K3=[diff(K1,th1) ]*dq;
+
+%Diff K with q
+
+K4=[diff(K,th1)];
+
+K5=[diff(P,th1)]
+
+%Equations of motion
+
+M=simplify(K2)
+
+C=simplify(K3-K4+K5)
+
+%EOM
+
+%Minv=inv(M)
+
+F=[tau1]
+
+%ddq=simplify(Minv*(F-C))

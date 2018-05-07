@@ -1,0 +1,28 @@
+clear all;
+clc;
+syms th1 th2 th3 l1 l2 l3
+o=vpa(zeros(2,1))
+th=[th1 th2 th3]
+d=[0 0 0]
+a=[l1 l2 l3]
+alp=[0 0 0]
+n=2
+temp=eye(4,4);
+z(1:3,1)=[0;0;1]
+o(1:3,1)=[0;0;0]
+for i=1:n
+    A=[cos(th(i)) -sin(th(i))*cos(alp(i)) sin(th(i))*sin(alp(i)) a(i)*cos(th(i))
+       sin(th(i)) cos(th(i))*cos(alp(i)) -cos(th(i))*sin(alp(i)) a(i)*sin(th(i))
+       0 sin(alp(i)) cos(alp(i)) d(i)
+       0 0 0 1];
+   T=temp*A;
+   z(1:3,i+1)=T(1:3,3)
+   o(1:3,i+1)=T(1:3,4)
+   temp=T
+end
+
+for k=1:n
+    J(1:3,k)=(z(2,k)*(o(3,n+1)-o(3,k)))
+    J(4:6,k)=z(1:3,k)
+end
+J=simplify(J)

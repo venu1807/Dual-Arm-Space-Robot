@@ -1,0 +1,64 @@
+
+dz=[ 0    0     0];
+alp=[0; 0; 0]; % Enter in degree 
+a=[0; a0/2; a1];                                                                       a=[0;     a0/2;  a1];
+b=[0; 0; 0];                                                                           a=[a(1)   a(2)  a(3)]
+Icxy=zeros(n,1);Icyz=zeros(n,1);Iczx=zeros(n,1); % Initialization
+Icxx=[I0x; I1x; I2x]=[Icxx(1) Icxx(2) Icxx(3)] 
+Icyy=[I0y; I1y; I2y]=[Icyy(1) Icyy(2) Icyy(3)]                                       dx=[ 0   d1x    d2x]
+Iczz=[I0z; I1z; I2z]=[Iczz(1) Iczz(2) Iczz(3)]     ;m=[m0; m1; m2];                 dx=[dx(1) dx(2) dx(3)];
+g=[0 ; 0; 0];
+alp=[0; 0; 0];                                                       [x0;   y0;  ph0;  th1;  th2]; 
+a=[0; 0.5; 1];                                                       [q(1) q(2)  q(3)  q(4)  q(5)]
+b=[0; 0; 0];
+%Parent array bt and corrosponding vectors                        [dx0;   dy0;   dph0;  dth1;  dth2];
+bt=[0 1 2 ];                                                      {dq(1)  dq(2)  dq(3)  dq(4)  dq(5)}
+
+%Link Length
+al=[1; 1; 1];                                              [  ddx0;  ddy0; ddph0; ddth1; ddth2  [m0; m1; m2]  ] 
+% %Distance from origin to link tssip in term of link length { ddq(1) ddq(2) ddq(3) ddq(4) ddq(5) m(1) m(2) m(3) }
+
+H=table(Y(:,1),Y(:,2),Y(:,3),Y(:,4),Y(:,5),Y(:,6),'VariableNames',{'x0' 'dx0' 'y0' 'dy0' 'th0' 'dth0'})
+K=table(M(:,1),M(:,2),M(:,3),M(:,4),M(:,5),M(:,6),'VariableNames',{'th1' 'th2' 'dth1' 'dth2' 'ddth1' 'ddth2'})
+
+
+Px=(m(1)*Y(id,2))+ m(2)*(Y(id,2))- m(2)*(a(2)*sin(Y(id,5))+dx(2)*sin(Y(id,5)+M(id,1)))*Y(id,6) -m(2)*dx(2)*sin(Y(id,5)+M(id,1))*M(id,3) + m(3)*Y(id,2) - m(3)*(a(2)*sin(Y(id,5))+dx(2)*sin(Y(id,5)+M(id,1)))*Y(id,6) -m(3)*(a(2)*sin(Y(id,5))+a(3)*sin(Y(id,5)+M(id,1))+dx(3)*sin(Y(id,5)+M(id,1)+M(id,2)))*(Y(id,6)+M(id,3)) - m(3)*(dx(2)*sin(Y(id,5)+M(id,1)))*M(id,3) -m(3)*(dx(2)*sin(Y(id,5)+M(id,1))+dx(3)*(sin(Y(id,5)+M(id,1)+M(id,2))*M(id,3) -m(3)*(dx(3)*sin(Y(id,5)+M(id,1)+M(id,2)))*M(id,4)
+
+Py=(m(1)*Y(id,4))+ m(2)*(Y(id,4))+ m(2)*(a(2)*cos(Y(id,5))+dx(2)*cos(Y(id,5)+M(id,1)))*Y(id,6)+m(2)*dx(2)*cos(Y(id,5)+M(id,1))*M(id,3)+ m(3)*Y(id,4) + m(3)*(a(2)*cos(Y(id,5))+dx(2)*cos(Y(id,5)+M(id,1)))*Y(id,6) + m(3)*(a(2)*cos(Y(id,5))+a(3)*cos(Y(id,5)+M(id,1))+dx(3)*cos(Y(id,5)+M(id,1)+M(id,2)))*(Y(id,6)+M(id,3)) + m(3)*(dx(2)*cos(Y(id,5)+M(id,1)))*M(id,3) +m(3)*(dx(2)*cos(Y(id,5)+M(id,1))+dx(3)*(cos(Y(id,5)+M(id,1)+M(id,2)))*M(id,3) +m(3)*(dx(3)*cos(Y(id,5)+M(id,1)+M(id,2)))*M(id,4)
+
+Lz=Iczz(1)+(Iczz(2)*Y(id,6))+ m(2)*(a(2)^2+dx(2)^2+2*(a(2)*dx(2))*cos(M(id,1)))*Y(id,6) + Iczz(3)*(Y(id,6)+M(id,3)) + m(3)*(a(2)^2+a(3)^2+dx(3)^2+ 2*a(2)*a(3)*cos(M(id,1)) +2*(a(3)*dx(3)*cos(M(id,2)))+ 2*(a(2)*dx(3))*cos(M(id,1)+M(id,2)))*(Y(id,6)+M(id,3)) +Iczz(1) + (Iczz(2)*M(id,3))+ m(2)*(dx(2)^2+(a(2)*dx(2)*cos(M(id,1)))*M(id,3) +(Iczz(3)*M(id,4))+m(3)*(dx(3)^2+(dx(3)*a(2)*cos(M(id,1)+M(id,2)))+(dx(3)*a(3)*cos(M(id,2))))*M(id,4) + m(2)*Y(id,4)*(a(2)*cos(Y(id,5))+dx(2)*cos(Y(id,5)+M(id,1))) + m(2)*Y(id,2)*(a(2)*sin(Y(id,5))+dx(2)*sin(Y(id,5)+M(id,1))) +m(3)*(Y(id,4)+(a(2)*cos(Y(id,5))+dx(2)*cos(Y(id,5)+M(id,1)))+(dx(2)*cos(Y(id,5)+M(id,1))*M(id,3)))*(a(2)*cos(Y(id,5))+a(3)*cos(Y(id,5)+M(id,1))+dx(3)*cos(Y(id,5)+M(id,1)+M(id,2))) + m(3)*(Y(id,2)-(a(2)*sin(Y(id,5))+dx(2)*sin(Y(id,5)+M(id,1)))-(dx(2)*sin(Y(id,5)+Y(id,6))*M(id,3)))*(a(2)*sin(Y(id,5))+a(3)*sin(Y(id,5)+M(id,1))+dx(3)*sin(Y(id,5)+M(id,1)+M(id,2)))
+
+
+
+ Px=(m(1)*Y(id,2))+ (m(2)*Y(id,2))- (m(2)*( a(2)*sin(Y(id,5))+ dx(2)*sin(Y(id,5)+M(id,1)) )*Y(id,6)) - (m(2)*dx(2)*sin(Y(id,5)+M(id,1))*M(id,3)) + (m(3)*Y(id,2)) - (m(3)*(a(2)*sin(Y(id,5))+dx(2)*sin(Y(id,5)+M(id,1)))*Y(id,6)) - (m(3)*( a(2)*sin(Y(id,5))+ a(3)*sin(Y(id,5)+M(id,1)) +dx(3)*sin(Y(id,5)+M(id,1)+M(id,2)) )*(Y(id,6)+M(id,3))) - (m(3)*(dx(2)*sin(Y(id,5)+M(id,1)))*M(id,3)) - (m(3)* (dx(2)*sin(Y(id,5)+M(id,1))+dx(3)*(sin(Y(id,5)+M(id,1)+M(id,2)))*M(id,3)) - (m(3)*(dx(3)*sin(Y(id,5)+M(id,1)+M(id,2))))*M(id,4));
+    Z1(index1)=Px;
+    
+    Py=(m(1)*Y(id,4))+ m(2)*(Y(id,4))+ m(2)*(a(2)*cos(Y(id,5))+dx(2)*cos(Y(id,5)+M(id,1)))*Y(id,6)+m(2)*dx(2)*cos(Y(id,5)+M(id,1))*M(id,3)+ m(3)*Y(id,4) + m(3)*(a(2)*cos(Y(id,5))+dx(2)*cos(Y(id,5)+M(id,1)))*Y(id,6) + m(3)*(a(2)*cos(Y(id,5))+a(3)*cos(Y(id,5)+M(id,1))+dx(3)*cos(Y(id,5)+M(id,1)+M(id,2)))*(Y(id,6)+M(id,3)) + m(3)*(dx(2)*cos(Y(id,5)+M(id,1)))*M(id,3) +m(3)*(dx(2)*cos(Y(id,5)+M(id,1))+dx(3)*(cos(Y(id,5)+M(id,1)+M(id,2)))*M(id,3) +m(3)*(dx(3)*cos(Y(id,5)+M(id,1)+M(id,2))))*M(id,4);
+    Z2(index1)=Py;
+    
+    Lz= Iczz(1) + Iczz(2)*Y(id,6) +  m(2)*( a(2)^2 +dx(2)^2 + 2*a(2)*dx(2)*cos(M(id,1)) )*Y(id,6) + Iczz(3)* (Y(id,6)+M(id,3)) + m(3)*( a(2)^2  +a(3)^2  +dx(3)^2 + 2*a(2)*a(3)*cos(M(id,1)) +2*a(3)*dx(3)*cos(M(id,2))+  2*a(2)*dx(3)*cos(M(id,1)+M(id,2)) ) *(Y(id,6)+M(id,3)) +Iczz(1) + Iczz(2)*M(id,3) + m(2)*( dx(2)^2 + a(2)*dx(2)*cos(M(id,1)) ) *M(id,3) + Iczz(3)*M(id,4) + m(3)*( dx(3)^2 + dx(3)*a(2)*cos(M(id,1)+M(id,2)) + dx(3)*a(3)*cos(M(id,2)) ) *M(id,4) + m(2)* Y(id,4)* ( a(2)*cos(Y(id,5)) +dx(2)*cos(Y(id,5)+M(id,1)) ) + m(2) *Y(id,2)* ( a(2)*sin(Y(id,5))+ dx(2)*sin(Y(id,5)+M(id,1)) ) + m(3)*( Y(id,4)+ ( a(2)*cos(Y(id,5)) +dx(2)*cos(Y(id,5)+M(id,1)) )*Y(id,6) +( dx(2)*cos(Y(id,5)+M(id,1))*M(id,3)) ) *( a(2)*cos(Y(id,5)) +a(3)*cos(Y(id,5)+M(id,1)) +dx(3)*cos(Y(id,5)+M(id,1)+M(id,2)) ) + m(3)*( Y(id,2)- ( a(2)*sin(Y(id,5)) +dx(2)*sin(Y(id,5)+M(id,1)) )*Y(id,6) - (dx(2)*sin(Y(id,5)+Y(id,6))*M(id,3)) )*( a(2)*sin(Y(id,5)) + a(3)*sin(Y(id,5)+M(id,1)) +dx(3)*sin(Y(id,5)+M(id,1)+M(id,2)) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
