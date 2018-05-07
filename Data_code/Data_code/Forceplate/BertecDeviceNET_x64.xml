@@ -1,0 +1,444 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        "BertecDeviceNET_x64"
+    </assembly>
+    <members>
+        <member name="M:BertecDeviceNET.BertecDevice.ResetSyncCounters">
+            <summary>
+Reset the internal sync counters to zero - used with dual synced plates.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.MayBeMissingSyncCable">
+            <summary>
+Attempt to detect a missing sync cable for multiple plates. Returns true if possibly missing.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.UsbThreadPriority">
+            <summary>
+Sets the usb thread reader priority. Advanced functionality, usually not needed.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.TransducerStatus(System.Int32)">
+            <summary>
+A given transducer's current status, separate from the overall state. Zero is good, negative bad.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.TransducerSerialNumber(System.Int32)">
+            <summary>
+A given transducer's serial number.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.AcquireRate">
+            <summary>
+How often the buffer should get data. The default is 10, valid values are from 1 to 50; 0=default of 10.
+Smaller values = faster+more callback action with smaller sample blocks, larger = less often callbacks, but bigger blocks of samples.
+The total AMOUNT of data in a given timeframe will be the same, this controls how often you get chunks of it.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.LowpassFilterSamples">
+            <summary>
+The low-pass filtering value. Should be &gt;=1. Setting to 0 or less turns it off
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.AveragingSize">
+            <summary>
+The averaging sample filter size. Less than 2 = no averaging.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.EnableSequenceNumberCheck">
+            <summary>
+Enables checking for data sequence numbers in the data stream. Missing sequences are zero-filled.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.AutoZeroState">
+            <summary>
+Returns the current enum status of the autozeroing. See AutoZeroStateValue
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.AutoZeroing">
+            <summary>
+Enables autozeroing of the plate, which occurs if the plate is loaded at less than 40 Newtons for about 3.5 seconds.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.PollingBufferSize">
+            <summary>
+The size of the polling buffer, in seconds
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.Transducers">
+            <summary>
+List of attached Transducers
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.TransducerCount">
+            <summary>
+How many attached devices are in the Transducers list
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.Synchronized">
+            <summary>
+If set, then all of the devices are synchronized
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.Status">
+            <summary>
+Overall status of system. Zero is good, negative bad
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.BertecDevice.Version">
+            <summary>
+Version of the Bertec DLL
+</summary>
+        </member>
+        <member name="M:BertecDeviceNET.BertecDevice.DataPoll(System.Int32@,System.Double[]@)">
+            <summary>
+Poll for data from the devices. Will return the number of samples (rows) of data,
+or a negative error number.
+</summary>
+        </member>
+        <member name="M:BertecDeviceNET.BertecDevice.ClearPollBuffer">
+            <summary>
+Discards all current data in the buffer
+</summary>
+        </member>
+        <member name="M:BertecDeviceNET.BertecDevice.ZeroNow">
+            <summary>
+Zero all the input channels to the current load
+</summary>
+        </member>
+        <member name="M:BertecDeviceNET.BertecDevice.Stop">
+            <summary>
+Stop the data gathering. Return a zero value if the process is stopped correctly.
+</summary>
+        </member>
+        <member name="M:BertecDeviceNET.BertecDevice.Start">
+            <summary>
+Start the data gathering. Return a zero value if the process is started correctly.
+</summary>
+        </member>
+        <member name="T:BertecDeviceNET.BertecDevice">
+            <summary>
+The BertecDevice class is what you will need to use to access the Bertec Devices that are attached
+to the USB port. Creating the class will connect to any attached Bertec Devices. Checking the Status
+property will tell you if there is a problem, and the list of attached Transducer Devices can be gotten
+from the Transducers list. 
+</summary>
+        </member>
+        <member name="T:BertecDeviceNET.DeviceSortEventHandler">
+            <summary>
+Represents the method that handles the BertecDeviceNET.OnDeviceSort event of the BertecDevice object.
+</summary>
+        </member>
+        <member name="T:BertecDeviceNET.StatusEventHandler">
+            <summary>
+Represents the method that handles the BertecDeviceNET.StatusEvent event of the BertecDevice object.
+</summary>
+        </member>
+        <member name="T:BertecDeviceNET.DataEventHandler">
+            <summary>
+Represents the method that handles the BertecDeviceNET.DataEvent event of the BertecDevice object.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducersList.Item(System.Int32)">
+            <summary>
+Gets the TransducerInfo at the specified index.
+</summary>
+            <param name="index">The zero-based index of the TransducerInfo to get</param>
+            <returns>The TransducerInfo at the specified index.</returns>
+        </member>
+        <member name="T:BertecDeviceNET.TransducersList">
+            <summary>
+Provides a collection of the currently attached Transducer devices.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.ZeroLevelNoiseValue(System.Int32)">
+            <summary>
+Returns the zero level noise value for a channel. Either ZeroNow or AutoZeroing must have been called prior to this 
+being used. The value returned is a computed value that can be used for advanced filtering. 
+Valid values are always zero or positive; negative values indicate either no zeroing or some other error.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.ChannelNames">
+            <summary>
+The name of each channel.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.ChannelCount">
+            <summary>
+How many output channels there are.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.Synchronized">
+            <summary>
+If set, then the device is a part of a sync group.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.SynchMaster">
+            <summary>
+If set, then the device is the sync master.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.SerialNumber">
+            <summary>
+Serial # of the device.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.SamplingFreq">
+            <summary>
+Sampling frequency in Hertz.
+</summary>
+        </member>
+        <member name="P:BertecDeviceNET.TransducerInfo.Status">
+            <summary>
+Status of the device, separate from the overall state. Zero is good, negative bad.
+</summary>
+        </member>
+        <member name="T:BertecDeviceNET.TransducerInfo">
+            <summary>
+Information about the Transducer.
+</summary>
+        </member>
+        <member name="T:BertecDeviceNET.AutoZeroStateValue">
+            <summary>
+Values that can be returned from reading the AutoZeroState property.
+</summary>
+        </member>
+        <member name="T:BertecDeviceNET.ErrorValue">
+            <summary>
+Error values that can be returned via the event or data poll.
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.ERROR_INVALIDHANDLE">
+            <summary>
+Internal error - handle is invalid
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.AUTOZERO_ZEROFOUND">
+            <summary>
+the zero leveling value was found
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.AUTOZERO_WORKING">
+            <summary>
+currently finding the zero values
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.POLL_DEVICES_READY">
+            <summary>
+there are plates to be read
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.DEVICE_HAS_FAULTED">
+            <summary>
+the device has failed in some manner - power off the device, check all connections, power back on
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.NO_DATA_RECEIVED">
+            <summary>
+no data is being received from the devices, check the cables
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.SEQUENCE_REGAINED">
+            <summary>
+the plates have regained their data sequence
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.SEQUENCE_MISSED">
+            <summary>
+one or more plates have missing data sequence - data may be invalid
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.SYNCHRONIZE_LOST">
+            <summary>
+the plates have lost sync with each other - check sync cable
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.DATA_SYNCHRONIZING">
+            <summary>
+synchronizing, data not available yet (in Status during callbacks, return code for polling)
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.POLL_NOTSTARTED">
+            <summary>
+Didn't start the data process - call Start
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.POLL_NODEVICES">
+            <summary>
+There are apparently no devices attached.
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.POLL_OVERFLOW">
+            <summary>
+The polling wasn't performed for long enough, the data after this point is delayed or lost.
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.POLL_CHECKSTATUS">
+            <summary>
+A status change occurred at this point.
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.POLL_NOPOLLBUFFER">
+            <summary>
+No DataPoll buffers were allocated via PollingBufferSize.
+</summary>
+        </member>
+        <member name="F:BertecDeviceNET.ErrorValue.POLL_NOUSERBUFFER">
+            <summary>
+The DataPoll call buffer was too small.
+</summary>
+        </member>
+        <member name="M:bertec_RegisterDeviceSortCallback(bertec_State_s*,System.MulticastDelegate,System.Void*)">
+This will set a callback that is used to sort the device order. By default they are sorted by usb hardware id/connection 
+</member>
+        <member name="M:bertec_ResetSyncCounters(bertec_State_s*)">
+This will reset the internal sync counters to zero; this is used with dual synced plates 
+</member>
+        <member name="M:bertec_GetMayBeMissingSyncCable(bertec_State_s*)">
+If there are multiple plates, then this will attempt to detect a missing sync cable.
+    Returns 1 if possibly missing. 
+</member>
+        <member name="M:bertec_SetUsbThreadPriority(bertec_State_s*,System.Int32)">
+set the usb thread reader priority. Advanced functionality, usually not needed. 
+</member>
+        <member name="M:bertec_GetZeroLevelNoiseValue(bertec_State_s*,System.Int32,System.Int32)">
+returns the zero level noise value for a device. ZeroNow/EnableAutozero must have been called.
+    This is a computed value that can be used for advanced filtering. 
+    This is always a positive value; negative values indicate no zeroing or some other error. 
+</member>
+        <member name="M:bertec_ClearPollBuffer(bertec_State_s*)">
+discards all current data in the buffer. 
+</member>
+        <member name="M:bertec_GetAllocatePollBuffer(bertec_State_s*)">
+returns the current poll buffer allocation as set before. 
+</member>
+        <member name="M:bertec_EnableSeqNumberCheck(bertec_State_s*,System.Int32)">
+enable/disable checking for data sequence numbers. 
+</member>
+        <member name="M:bertec_TransducerSerialNumber(bertec_State_s*,System.Int32,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte*,System.Int32)">
+convenience function to access the transducer's serial number 
+</member>
+        <member name="M:bertec_DataPoll(bertec_State_s*,System.Int32,System.Double*,System.Int32*)">
+the buf_size passed to bertec_data_poll was too small to hold one sample 
+no poll buffers were allocated via allocate_poll_buffer 
+status change occurred at this point, must call bertec_status_poll to clear
+    this condition 
+the polling wasn't performed for long enough, the data after this point
+    is delayed, must call bertec_overflow_poll to get the time lost and clear this
+    condition 
+there are apparently no devices attached 
+didn't start the data process 
+synchronizing, data not available yet (in bertec_State::status during callbacks, return code for polling) 
+the plates have lost sync with each other - check sync cable 
+one or more plates have missing data sequence - data may be invalid 
+the plates have regained their data sequence 
+no data is being received from the devices, check the cables 
+the device has failed in some manner - power off the device, check all connections, power back on 
+there are plates to be read 
+currently finding the zero values 
+the zero leveling value was found 
+handle is invalid 
+poll for data, returns: count of samples, 0 if nothing came yet,
+    or BERTEC_DATA_POLL_xxx; requires buf_size in bytes; channels can be NULL, otherwise returns
+    number of channels 
+</member>
+        <member name="M:bertec_AllocatePollBuffer(bertec_State_s*,System.Double)">
+setup an internal buffer so that data can be polled without using callbacks,
+    time in seconds: the buffer is guaranteed to be at least that long or longer,
+    0 to disable 
+</member>
+        <member name="M:bertec_RegisterDataCallback(bertec_State_s*,System.MulticastDelegate,System.Void*)">
+callback registration functions
+    * callbacks are called from a separate thread
+    * the callback is called with the user_data pointer passed to the register function
+    * a callback is identified by the (function pointer, user data pointer) pair -
+      the pair has to be unique
+    * the registration functions safely ignore any requests to register existing
+      callbacks (i.e. same pair), or to unregister callbacks that are not
+      registered at the moment
+    * if no user_data is needed, it should be NULL 
+</member>
+        <member name="M:bertec_ClearOverflowError(bertec_State_s*)">
+if a data buffering overflow occurred, return the missed amount of time in samples (0 if no overflow).
+     Resets the overflow condition. 
+</member>
+        <member name="M:bertec_ClearStatusError(bertec_State_s*)">
+call this when there is an error to clear it and continue data gathering 
+</member>
+        <member name="M:bertec_RestartData(bertec_State_s*)">
+restarts data callbacks after a state change 
+</member>
+        <member name="M:bertec_GetState(bertec_State_s*)">
+returns the current state 
+</member>
+        <member name="M:bertec_Stop(bertec_State_s*)">
+stop the data gathering 
+</member>
+        <member name="M:bertec_Start(bertec_State_s*)">
+start the data gathering 
+</member>
+        <member name="M:bertec_SetAcquireRate(bertec_State_s*,System.Int32)">
+Set how often the buffer should get data. The default is 10, legit values are from 1 to 50; 0=default of 10.
+    Smaller values = faster+more callback action with smaller sample blocks, larger = less often callbacks, but bigger blocks of samples 
+</member>
+        <member name="M:bertec_SetLowpassFiltering(bertec_State_s*,System.Int32)">
+Perform low-pass filtering on the samples. SamplesToFilter should be &gt;=1. Setting to 0 or less turns it off. 
+</member>
+        <member name="M:bertec_SetAveraging(bertec_State_s*,System.Int32)">
+Average the samples. SamplesToAverage should be &gt;= 2. Setting to 1 or less turns it off 
+</member>
+        <member name="M:bertec_AutozeroState(bertec_State_s*)">
+returns the current status of the autozero: 0=not enabled, 1=autozero enabled, but not yet achieved, 2=autozero achieved and will continue to do so
+</member>
+        <member name="M:bertec_EnableAutozero(bertec_State_s*,System.Int32)">
+enable/disable the autozeroing of the plate, which occurs if the plate is loaded at less than 40 Newtons for
+    about 3.5 seconds. 
+</member>
+        <member name="M:bertec_ZeroNow(bertec_State_s*)">
+zero the input against what the plate has loaded on it right now 
+</member>
+        <member name="M:bertec_Close(bertec_State_s*)">
+close the library when it's no longer needed 
+</member>
+        <member name="M:bertec_Init">
+ Format of data returned in data_callback and data_poll
+
+ Multiple transducers are supported, any active transducers are listed in
+ bertec_state_t::transducers.
+ The data returned is *calibrated*, usually 3 or 6 channels.
+ Currently all transducers will have same sampling frequency.
+
+ Thus, a sample from each transducer will have 1 or more channels in it.
+ All the samples are time-synchronized. The order that you receive
+ the samples is transducer-first, time second.
+
+ Example: assume two transducers. Transducer 0 (as in bertec_state_t::transducers)
+ has 4 channels, transducer 1 has 2 channels.
+
+ The data is ordered as follows:
+ t+0ms: tr0ch0,tr0ch1,tr0ch2,tr0ch3, tr1ch0,tr1ch1
+ t+1ms: tr0ch0,tr0ch1,tr0ch2,tr0ch3, tr1ch0,tr1ch1
+ and so on.
+ channels = 2+4
+
+callback into the user code when data becomes available
+    samples is the total number of samples, or negative for an error
+    channels is the total number of channels in each sample, those channels can come from several transducers
+    data points to a buffer holding samples * channels elements of type double 
+initialize the library, returns a handle 
+</member>
+        <member name="T:bertec_TransducerInfo_s">
+information about the transducer 
+</member>
+        <member name="T:bertec_State_s">
+The version define is the version # of this Device DLL. You can check it in bertec_Handle::version
+    If it doesn't match what this one is, then the structures and/or functions have changed,
+    and you should proceed with caution. 
+This defines how many channels and devices that the DLL can support. 
+internal state of the library 
+
+information about state of the data acquisition system 
+</member>
+    </members>
+</doc>

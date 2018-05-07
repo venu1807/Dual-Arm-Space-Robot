@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Updates</title>
+<style type="text/css">
+<!--
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+}
+-->
+</style>
+</head>
+<body>
+<h2>Bertec Device DLL revision history.</h2>
+<ul>
+  Changes since March 24, 2014 to May 8, 2014 - build 420:
+    <li>DLL now supports the latest series of force plates and devices..</li>
+    <li>Updated to current FTDI chipset drivers.</li>
+</ul>
+<ul>
+  Changes since July 1, 2012 to March 24, 2014 - build 417:
+    <li>Added functionality to support re-ordering of plates.</li>
+	<li>Added functionality to allow thread priority changes.</li>
+	<li>Added 64-bit support.</li>
+    <li>Updated to current FTDI chipset drivers.</li>
+</ul>
+
+<ul>
+  Changes since March 28, 2012 to July 1, 2012 - build 352:
+    <li>Improved handling of dual synced plates.</li>
+	<li>Removed function to get current sync drift since this no longer applies.</li>
+	<li>Added functions to check if sync cable connected and resetting of sync values.</li>
+	<li>Added code to resolve problems with certain mixes of system USB ports, amplifiers, and devices.</li>
+    <li>Other minor improvements.</li>
+</ul>
+
+
+<ul>
+  Changes since August 23, 2010 to March 28, 2012 - build 310:
+    <li>Added advanced functionality to control usb thread priority.</li>
+	<li>Changes made to support control over the usb timeouts.</li>
+	<li>Now supports plates that have calibration matrixes that include + signs as part of the data.</li>
+    <li>Error logging in the %TEMP% folder now records more information which will assist in resolving device issues. </li>
+</ul>
+
+<ul>
+  Changes since October 28, 2009 to August 23, 2010 - build 300:
+    <li>Removed Get/SetAcquirePortReadRate.</li>
+	<li>Added ClearPollBuffer to discard current buffered data.</li>
+	<li>Added GetZeroLevelNoiseValue for advanced filtering.</li>
+	<li>Changed how multiple plates are handled to prevent "stalling" on some systems.</li>
+	<li>CoP channel now uses a threshold value for better results.</li>
+	<li>Better handling of USB errors.</li>
+	<li>Updated to current chipset drivers.</li>
+  <li>Improvements to data reading to reduce "lag" on slower systems, noticeably older laptops. </li>
+  <li>No longer initializes devices twice.</li>
+  <li>Syncing with more than one device now works properly</li>
+</ul>
+<ul>
+  Changes since October 8, 2009 to October 28, 2009 - build 200:
+    <li>Support for new firmware version that mitigates some USB port issues and data interference.</li>
+  <li>USB port reading speed has been improved, along with memory and resource management. </li>
+</ul>
+<ul>
+  Changes since July 20, 2009 to October 8, 2009 - build 194:
+  <li>Improved support for more than two synchronized plates, including diagnostic function to get current offset.</li>
+  <li>Flow control has been improved</li>
+  <li>Support for newest firmware and data checksum functionality.</li>
+  <li>Changes in calibration matrix now handled better.</li>
+  <li>Improved the startup response time, no longer inits the devices twice on first start.</li>
+  <li>New functionality: get last set buffer size.</li>
+  <li>New functionality: set and get the low-level read size for fine control of device latency.</li>
+  <li>New functionality: able to clear the poll buffer.</li>
+  <li>Added JAVA bindings and example code.</li>
+  <li>.NET support library updated with TransducerStatus and better event support. </li>
+  <li>Updated examples to be more clear and less redundant.</li>
+</ul>
+<ul>
+  Changes since February 11, 2009 to July 20, 2009 - build 183:
+  <li>Improved processor usage when no devices are connected.</li>
+  <li>Improved data sequence checking.</li>
+  <li>Improved the way fallbacks are done with regards to handling versions of the FTDI chipset. </li>
+  <li>Added support for more &quot;generic&quot; FTDI chipsets for wider range of device usage. </li>
+  <li>Added support for new firmware that allows for CRC checksum.</li>
+  <li>Devices are now always initialized on startup, instead of waiting for them.</li>
+  <li>Error logging is done to a %TEMP%\bertecdevicelog.txt file. </li>
+  <li>Multiple synchronized devices are now supported better. </li>
+  <li>Corrected handling of plates that report more channels than actually exist.</li>
+  <li>The usb controller now uses RTS/DTS flow control to improve latency on some systems. </li>
+</ul>
+<hr />
+<p>Thank you for your support. </p>
+</body>
+</html>

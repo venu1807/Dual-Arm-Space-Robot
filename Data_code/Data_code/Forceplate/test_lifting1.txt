@@ -1,0 +1,15 @@
+Loading SDK...{Undefined variable "Client" or class
+"Client.LoadViconDataStreamSDK".
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('test', 'C:\Users\Phani\Dropbox\DH\RobotModel\Material and papers\Inverse Optimal control\Data_code\nexus\test.m', 46)" style="font-weight:bold">test</a> (<a href="matlab: opentoline('C:\Users\Phani\Dropbox\DH\RobotModel\Material and papers\Inverse Optimal control\Data_code\nexus\test.m',46,0)">line 46</a>)
+Client.LoadViconDataStreamSDK();
+} 
+test
+test
+{Undefined function or variable
+'command'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('test', 'C:\Users\Phani\Dropbox\DH\RobotModel\Material and papers\Inverse Optimal control\Data_code\nexus\test.m', 16)" style="font-weight:bold">test</a> (<a href="matlab: opentoline('C:\Users\Phani\Dropbox\DH\RobotModel\Material and papers\Inverse Optimal control\Data_code\nexus\test.m',16,0)">line 16</a>)
+dos(command);
+} 
+test
