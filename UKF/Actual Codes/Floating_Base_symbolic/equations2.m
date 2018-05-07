@@ -1,0 +1,2 @@
+matrix([[- a1*m2*sin(conj(th1)) - d1x*m1*sin(conj(th1)) - d2x*m2*sin(conj(th1) + conj(th2)), -d2x*m2*sin(conj(th1) + conj(th2))], [a1*m2*cos(conj(th1)) + d1x*m1*cos(conj(th1)) + d2x*m2*cos(conj(th1) + conj(th2)), d2x*m2*cos(conj(th1) + conj(th2))], [0, 0], [0, 0], [0, 0], [I1z + I2z + a1^2*m2 + d1x^2*m1 + d2x^2*m2 + (a0*d2x*m2*cos(conj(th1) + conj(th2)))/2 + (a0*a1*m2*cos(conj(th1)))/2 + (a0*d1x*m1*cos(conj(th1)))/2 + 2*a1*d2x*m2*cos(conj(th2)), I2z + d2x^2*m2 + (a0*d2x*m2*cos(conj(th1) + conj(th2)))/2 + a1*d2x*m2*cos(conj(th2))]])
+

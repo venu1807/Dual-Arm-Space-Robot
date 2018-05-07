@@ -1,0 +1,33 @@
+Hb=[
+
+
+[m0 + m1 + m2, 0, 0, 0, 0, - a1*m2*sin(conj(th1)) - d1x*m1*sin(conj(th1)) - d2x*m2*sin(conj(th1) + conj(th2))]
+
+[0, m0 + m1 + m2, 0, 0, 0, (a0*(m1 + m2))/2 + a1*m2*cos(conj(th1)) + d1x*m1*cos(conj(th1)) + d2x*m2*cos(conj(th1) + conj(th2))], 
+
+[0, 0, m0 + m1 + m2, a1*m2*sin(conj(th1)) + d1x*m1*sin(conj(th1)) + d2x*m2*sin(conj(th1) + conj(th2)), - (a0*(m1 + m2))/2 - a1*m2*cos(conj(th1)) - d1x*m1*cos(conj(th1)) - d2x*m2*cos(conj(th1) + conj(th2)), 0]
+
+[0, 0, a1*m2*sin(conj(th1)) + d1x*m1*sin(conj(th1)) + d2x*m2*sin(conj(th1) + conj(th2)), I0x + I1x/2 + I2x/2 + I1y/2 + I2y/2 + (I1x*cos(2*conj(th1)))/2 - (I1y*cos(2*conj(th1)))/2 + (a1^2*m2)/2 + (d1x^2*m1)/2 + (d2x^2*m2)/2 + (I2x*cos(2*conj(th1) + 2*conj(th2)))/2 - (I2y*cos(2*conj(th1) + 2*conj(th2)))/2 - (a1^2*m2*cos(2*conj(th1)))/2 - (d1x^2*m1*cos(2*conj(th1)))/2 - (d2x^2*m2*cos(2*conj(th1) + 2*conj(th2)))/2 - a1*d2x*m2*cos(2*conj(th1) + conj(th2)) + a1*d2x*m2*cos(conj(th2)), (I1x*sin(2*conj(th1)))/2 - (I1y*sin(2*conj(th1)))/2 + (I2x*sin(2*conj(th1) + 2*conj(th2)))/2 - (I2y*sin(2*conj(th1) + 2*conj(th2)))/2 - (a1^2*m2*sin(2*conj(th1)))/2 - (d1x^2*m1*sin(2*conj(th1)))/2 - (d2x^2*m2*sin(2*conj(th1) + 2*conj(th2)))/2 - (a0*d2x*m2*sin(conj(th1) + conj(th2)))/2 - a1*d2x*m2*sin(2*conj(th1) + conj(th2)) - (a0*a1*m2*sin(conj(th1)))/2 - (a0*d1x*m1*sin(conj(th1)))/2, 0]
+
+[0, 0, - (a0*(m1 + m2))/2 - a1*m2*cos(conj(th1)) - d1x*m1*cos(conj(th1)) - d2x*m2*cos(conj(th1) + conj(th2)), (I1x*sin(2*conj(th1)))/2 - (I1y*sin(2*conj(th1)))/2 + (I2x*sin(2*conj(th1) + 2*conj(th2)))/2 - (I2y*sin(2*conj(th1) + 2*conj(th2)))/2 - (a1^2*m2*sin(2*conj(th1)))/2 - (d1x^2*m1*sin(2*conj(th1)))/2 - (d2x^2*m2*sin(2*conj(th1) + 2*conj(th2)))/2 - (a0*d2x*m2*sin(conj(th1) + conj(th2)))/2 - a1*d2x*m2*sin(2*conj(th1) + conj(th2)) - (a0*a1*m2*sin(conj(th1)))/2 - (a0*d1x*m1*sin(conj(th1)))/2, I1x/2 + I2x/2 + I0y + I1y/2 + I2y/2 - (I1x*cos(2*conj(th1)))/2 + (I1y*cos(2*conj(th1)))/2 + (a0^2*m1)/4 + (a0^2*m2)/4 + (a1^2*m2)/2 + (d1x^2*m1)/2 + (d2x^2*m2)/2 - (I2x*cos(2*conj(th1) + 2*conj(th2)))/2 + (I2y*cos(2*conj(th1) + 2*conj(th2)))/2 + (a1^2*m2*cos(2*conj(th1)))/2 + (d1x^2*m1*cos(2*conj(th1)))/2 + (d2x^2*m2*cos(2*conj(th1) + 2*conj(th2)))/2 + a0*d2x*m2*cos(conj(th1) + conj(th2)) + a1*d2x*m2*cos(2*conj(th1) + conj(th2)) + a0*a1*m2*cos(conj(th1)) + a0*d1x*m1*cos(conj(th1)) + a1*d2x*m2*cos(conj(th2)), 0]
+
+[- a1*m2*sin(conj(th1)) - d1x*m1*sin(conj(th1)) - d2x*m2*sin(conj(th1) + conj(th2)), (a0*(m1 + m2))/2 + a1*m2*cos(conj(th1)) + d1x*m1*cos(conj(th1)) + d2x*m2*cos(conj(th1) + conj(th2)), 0, 0, 0, I0z + I1z + I2z + (a0^2*m1)/4 + (a0^2*m2)/4 + a1^2*m2 + d1x^2*m1 + d2x^2*m2 + a0*d2x*m2*cos(conj(th1) + conj(th2)) + a0*a1*m2*cos(conj(th1)) + a0*d1x*m1*cos(conj(th1)) + 2*a1*d2x*m2*cos(conj(th2))]
+
+];
+
+Hbm=[
+
+
+[- a1*m2*sin(conj(th1)) - d1x*m1*sin(conj(th1)) - d2x*m2*sin(conj(th1) + conj(th2)), -d2x*m2*sin(conj(th1) + conj(th2))]
+
+[a1*m2*cos(conj(th1)) + d1x*m1*cos(conj(th1)) + d2x*m2*cos(conj(th1) + conj(th2)), d2x*m2*cos(conj(th1) + conj(th2))]
+
+[0, 0]
+
+[0, 0]
+
+[0, 0]
+
+[I1z + I2z + a1^2*m2 + d1x^2*m1 + d2x^2*m2 + (a0*d2x*m2*cos(conj(th1) + conj(th2)))/2 + (a0*a1*m2*cos(conj(th1)))/2 + (a0*d1x*m1*cos(conj(th1)))/2 + 2*a1*d2x*m2*cos(conj(th2)), I2z + d2x^2*m2 + (a0*d2x*m2*cos(conj(th1) + conj(th2)))/2 + a1*d2x*m2*cos(conj(th2))]
+
+]

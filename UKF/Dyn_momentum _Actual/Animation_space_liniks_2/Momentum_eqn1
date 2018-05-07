@@ -1,0 +1,7 @@
+Px=(m0*dx0)+ m1*(dx0)- m1*(a0/2*sin(th0)+d1x*sin(th0+th1))*dth0 -m1*d1x*sin(th0+th1)*dth1 + m2*dx0 - m2*(a0/2*sin(th0)+d1x*sin(th0+th1))*dth0 -m2*(a0/2*sin(th0)+a1*sin(th0+th1)+d2x*sin(th0+th1+th2))*(dth0+dth1) - m2*(d1x*sin(th0+th1))*dth1 -m2*(d1x*sin(th0+th1)+d2x*(sin(th0+th1+th2))*dth1 -m2*(d2x*sin(th0+th1+th2))*dth2
+
+Py=(m0*dy0)+ m1*(dy0)+ m1*(a0/2*cos(th0)+d1x*cos(th0+th1))*dth0 +m1*d1x*cos(th0+th1)*dth1 + m2*dy0 + m2*(a0/2*cos(th0)+d1x*cos(th0+th1))*dth0 + m2*(a0/2*cos(th0)+a1*cos(th0+th1)+d2x*cos(th0+th1+th2))*(dth0+dth1) + m2*(d1x*cos(th0+th1))*dth1 +m2*(d1x*cos(th0+th1)+d2x*(cos(th0+th1+th2))*dth1 + m2*(d2x*cos(th0+th1+th2))*dth2
+
+Lz=I0z+(I1z*dth0)+ m1*(a0^2/4+d1x^2+2*(a0/2*d1x)*cos(th1))*dth0 + I2z*(dth0+dth1) + m2*(a0^2/4+a1^2+d2x^2+ 2*a0/2*a1*cos(th1) +2*(a1*d2x*cos(th2))+ 2*(a0/2*d2x)*cos(th1+th2))*(dth0+dth1) +I0z + (I1z*dth1)+ m1*(d1x^2+(a0/2*d1x*cos(th1))*dth1 +(I2z*dth2)+m2*(d2x^2+(d2x*a0/2*cos(th1+th2))+(d2x*a1*cos(th2)))*dth2 + m1*dy0*(a0/2*cos(th0)+d1x*cos(th0+th1)) + m1*dx0*(a0/2*sin(th0)+d1x*sin(th0+th1)) +m2*dy1*(a0/2*cos(th0)+a1*cos(th0+th1)+d2x*cos(th0+th1+th2)) + m2*dx1*(a0/2*sin(th0)+a1*sin(th0+th1)+d2x*sin(th0+th1+th2))
+
+
